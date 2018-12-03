@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>表情包图片库</title>
+    <script type="text/javascript" src="scripts/showPic.js"></script>
 </head>
 <body>
     <!-- 标题 -->
@@ -13,16 +14,16 @@
     <div id="list">
         <ul>
             <li>
-                <a href="image/pcr1.jpg" title="one">我掐指一算</a>
+                <a href="image/pcr1.jpg" target="_blank" title="one" onclick="showPic(this); return false;">我掐指一算</a>
             </li>
             <li>
-                <a href="image/pcr2.jpg" title="two">乖巧</a>
+                <a href="image/pcr2.jpg" title="two" onclick="showPic(this); return false;">乖巧</a>
             </li>
             <li>
-                <a href="image/pcr3.jpg" title="three">不订</a>
+                <a href="image/pcr3.jpg" title="three" onclick="showPic(this); return false;">不订</a>
             </li>
         </ul>
-        <img id="placeholder" src="imgae/placeholder.gif" alt="my image gallery">
+        <img id="placeholder" src="image/placeholder.jpg" alt="my image gallery">
     </div>
 </body>
 </html>
