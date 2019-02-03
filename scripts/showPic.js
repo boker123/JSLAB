@@ -1,11 +1,19 @@
 // 改变显示图片的方式让他在同一页面加载
 function showPic(whichpic) {
+    if(!document.getElementById("placeholder"))
+        return false;
     var source = whichpic.getAttribute("href");
-    var text = whichpic.getAttribute("title");
-    var description = document.getElementById("description");
     var placeholder = document.getElementById("placeholder");
     placeholder.setAttribute("src",source);
-    description.firstChild.nodeValue = text;
+    if(document.getElementById("description")){
+        var description = document.getElementById("description");
+        if(whichpic.getAttribute("title") != null)
+            var text = whichpic.getAttribute("title");
+        else
+            var text = "";
+        description.firstChild.nodeValue = text;
+    }
+    return true;
 }
 
 //分离js和html代码，并设置平稳退化
@@ -23,8 +31,7 @@ function prepareGallery() {
     //为每一个图片添加onclik事件
     for(var i = 0; i < links.length; i++){
         links[i].onclick = function() {
-            showPic(this);
-            return false;
+            return !showPic(this);
         }
     }
 }
