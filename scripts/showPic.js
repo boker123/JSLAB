@@ -36,6 +36,21 @@ function prepareGallery() {
     }
 }
 
+function insertAfter(newElement,targetElement) {
+    var parent = targetElement.parentNode;
+    if (parent.lastChild == targetElement) {
+        parent.appendChild(newElement);
+    }
+    else {
+        parent.insertBefore(newElement,targetElement.nextSibling);
+    }
+}
+
+function preparePlaceholder() {
+
+}
+
+//像mian函数一样
 function addLoadEvent(func) {
     var oldonload = window.onload;
     if (typeof window.onload != 'function') {
@@ -49,4 +64,5 @@ function addLoadEvent(func) {
     }
 }
 
-addLoadEvent(prepareGallery);
+//最终要调用的函数
+addLoadEvent(prepareGallery)
