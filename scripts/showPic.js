@@ -1,4 +1,4 @@
-// 改变显示图片的方式让他在同一页面加载
+// show picture in a page
 function showPic(whichpic) {
     if(!document.getElementById("placeholder"))
         return false;
@@ -16,19 +16,19 @@ function showPic(whichpic) {
     return true;
 }
 
-//分离js和html代码，并设置平稳退化
+//separate js and html's code graceful degradation
 function prepareGallery() {
-    //测试浏览器支持和检查选择器是否存在
+    //test if browser support and selector exist
     if(!document.getElementsByTagName) 
         return false;
     if(!document.getElementById)
         return false;
     if(!document.getElementById("imagegallery"))
         return false;
-    //创建基本变量
+    //create variable
     var gallery = document.getElementById("imagegallery");
     var links = gallery.getElementsByTagName("a");
-    //为每一个图片添加onclik事件
+    //add onclickevent to each element
     for(var i = 0; i < links.length; i++){
         links[i].onclick = function() {
             return !showPic(this);
@@ -47,10 +47,18 @@ function insertAfter(newElement,targetElement) {
 }
 
 function preparePlaceholder() {
-
+    var placeholder = document.createElement("img");
+    placeholder.setAttribute("id","placeholder");
+    placeholder.setAttribute("src","images/placeholder.gif");
+    placeholder.setAttribute("alt","my image gallery");
+    var description = document.createElement("p");
+    var desctext = document.createTextNode("Choose an image");
+    description.appendChild(desctext);
+    document.body.appendChild(placeholder);
+    document.body.appendChild(description);
 }
 
-//像mian函数一样
+//same as mian function
 function addLoadEvent(func) {
     var oldonload = window.onload;
     if (typeof window.onload != 'function') {
@@ -64,5 +72,5 @@ function addLoadEvent(func) {
     }
 }
 
-//最终要调用的函数
+//final call up
 addLoadEvent(prepareGallery)
